@@ -21,18 +21,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// //Client Route List
-// Route::middleware(['auth','user-access:user'])->group(function (){
-//     Route::get('/home',[App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// });
-// //admin Route List
-// Route::middleware(['auth','user-access:admin'])->group(function (){
-//     Route::get('/admin/home',[App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home');
-// });
+//Client Route List
+Route::middleware(['auth','user-access:0'])->group(function (){
+    Route::get('/home',[App\Http\Controllers\HomeController::class, 'index'])->name('home');
+});
+//admin Route List
+Route::middleware(['auth','user-access:1'])->group(function (){
+    Route::get('/admin/home',[App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home');
+});
 
-// //Super Admin Route List
-// Route::middleware(['auth','user-access:superadmin'])->group(function (){
-//     Route::get('/superadmin/home',[App\Http\Controllers\HomeController::class, 'superAdminHome'])->name('superAdmin.home');
-// });
+//Super Admin Route List
+Route::middleware(['auth','user-access:2'])->group(function (){
+    Route::get('/superadmin/home',[App\Http\Controllers\HomeController::class, 'superAdminHome'])->name('superAdmin.home');
+});
