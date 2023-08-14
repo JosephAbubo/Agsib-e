@@ -23,6 +23,7 @@ class CreateAdminRequestForm extends FormRequest
     {
         return [
             'name'=> 'required|string|max:100',
+            'email'=> 'required',
             'password' => 'required|max:100',
             'barangay' => 'required|string|max:100',
             'user-type' => 'required|integer'

@@ -13,7 +13,7 @@ class CreateAdminController extends Controller
      */
     public function index()
     {
-        //
+        return \App\Models\User::all();
     }
 
     /**
